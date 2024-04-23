@@ -1,7 +1,9 @@
-use top_early_console::init;
-
 mod boot;
 
 unsafe extern "C" fn rust_entry(cpu_id: usize, dtb: usize) {
-    init(cpu_id, dtb);
+    runtime_main(cpu_id, dtb);
+}
+
+extern "Rust" {
+    fn runtime_main(cpu_id: usize, dtb: usize);
 }
