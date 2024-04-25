@@ -1,6 +1,7 @@
 mod boot;
 
 unsafe extern "C" fn rust_entry(cpu_id: usize, dtb: usize) {
+    super::clear_bss();
     runtime_main(cpu_id, dtb);
 }
 
