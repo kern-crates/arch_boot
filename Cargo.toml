@@ -12,7 +12,6 @@ smp = []
 [dependencies]
 log = "0.4"
 cfg-if = "1.0"
-early_mmu = { git = "ssh://git@github.com/shilei-massclouds/early_mmu.git" }
 axconfig = { git = "ssh://git@github.com/shilei-massclouds/axconfig.git" }
 
 [target.'cfg(target_arch = "x86_64")'.dependencies]
