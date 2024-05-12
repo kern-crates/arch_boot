@@ -67,12 +67,6 @@ bsp_entry32:
     ENTRY32_COMMON
     ljmp    0x10, offset bsp_entry64 - {offset}    # 0x10 is code64 segment
 
-.code32
-.global ap_entry32
-ap_entry32:
-    ENTRY32_COMMON
-    ljmp    0x10, offset ap_entry64 - {offset}     # 0x10 is code64 segment
-
 .code64
 bsp_entry64:
     ENTRY64_COMMON
@@ -83,20 +77,6 @@ bsp_entry64:
 
     # call rust_entry(magic, mbi)
     movabs  rax, offset {entry}
-    call    rax
-    jmp     .Lhlt
-
-.code64
-ap_entry64:
-    ENTRY64_COMMON
-
-    # set RSP to high address (already set in ap_start.S)
-    mov     rax, {offset}
-    add     rsp, rax
-
-    # call rust_entry_secondary(magic)
-    mov     rdi, {mb_magic}
-    movabs  rax, offset {entry_secondary}
     call    rax
     jmp     .Lhlt
 

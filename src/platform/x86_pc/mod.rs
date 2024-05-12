@@ -6,10 +6,7 @@ unsafe extern "C" fn rust_entry(magic: usize, mbi: usize) {
         super::clear_bss();
         runtime_main(magic, mbi);
     }
-}
-
-#[allow(unused_variables)]
-unsafe extern "C" fn rust_entry_secondary(magic: usize) {
+    unreachable!();
 }
 
 extern "Rust" {
