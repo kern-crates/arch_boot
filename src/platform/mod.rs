@@ -7,6 +7,8 @@ if #[cfg(all(target_arch = "x86_64", platform_family = "x86-pc"))] {
     mod riscv64_qemu_virt;
 } else if #[cfg(all(target_arch = "aarch64", platform_family = "aarch64-qemu-virt"))] {
     mod aarch64_qemu_virt;
+} else if #[cfg(all(target_arch = "loongarch64", platform_family = "loongarch64-qemu-virt"))] {
+    mod loongarch64_qemu_virt;
 } else {
     mod dummy;
     pub use self::dummy::*;
